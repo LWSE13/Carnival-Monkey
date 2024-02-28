@@ -1,0 +1,62 @@
+#logo{
+    display: flex; /* Make the container inline-block */
+    padding: 5px 0;
+    width: 25%;;
+    justify-content: center;
+    border: 5px solid black;
+}
+
+
+.container {
+    margin: 20px;
+    display: flex;
+    height: 600px; /* Set the height of the container */
+    border: 5px solid black;
+    padding: 10px;
+}
+
+
+.input-container {
+    flex: 0 0 30%; /* Take up 30% of the width */
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Align items vertically to the top */
+    align-items: center; /* Center items horizontally */
+    border: 3px solid black; /* Add a border */
+    padding: 0 0 10px 0 ; /* Add padding */
+    height: 300px;
+    border-radius: 20px;
+}
+button{
+    background-color: white; 
+    border: 2px solid black;
+    border-radius: 4px;
+}
+
+.input-container input,
+.input-container h2,
+.input-container button {
+    display: block;
+    padding: 10px;
+    margin: 10px;
+}
+
+
+
+.stacked-containers {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 70%; /* Take up 50% of the width */
+    
+}
+
+.sub-container {
+    background-color: white;
+    border: 3px solid black;
+    margin: 0 5px 5px;
+    height: 50%;
+}
+
+
+
