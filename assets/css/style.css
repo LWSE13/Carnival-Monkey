@@ -125,6 +125,7 @@ cursor: pointer;
 
 .button-styling:hover {
     background-color: var(--pink);
+}
 .carousel {
     position: relative;
     height: 100%;
@@ -163,21 +164,7 @@ h3{
 #events-container:hover .event-info{
     display: block;
 }
-img{
-    height: 1365px;
-    width:2426px
-}
-#logo{
-    display: flex; /* Make the container inline-block */
-    padding: 5px 0;
-    width: 25%;;
-    justify-content: center;
-    border: 5px solid black;
-}
-#logo-img{
-    height: 70px;
-    width: 70px;
-}
+
 #map {
             height: 400px;
             width: 100%;
