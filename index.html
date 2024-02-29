@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carnival Monkey</title>
     <link rel="stylesheet" href="./assets/css/style.css"/>
-    
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,370;1,6..12,370&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBe7wJ9Vbn0a6bFEZtjU4L49Zsx4eSF41c&callback=initMap"></script>
+
 
     
 </head>
@@ -18,18 +18,22 @@
     <header>
         <div id="logo">
             <h1>Carnival Monkey</h1>
-            <img src="./assets/logo/carnival-monkey.png" alt="picture of monkey with party hat on" width="70px" height="70px"/>
+            <img id="logo-img" src="./assets/logo/carnival-monkey.png" alt="picture of monkey with party hat on" width="70px" height="70px"/>
         </div>
 </header>
     <div class="container">
         <div class="input-container">
             <h2>city</h2>
             <input type="text" placeholder="city" id="city-input">
+          
             <button type="submit" id="searchBtn">search</button>
         </div>
         <div class="stacked-containers">
             <div class="sub-container" id="events-container">
-               
+               <div class="carousel">
+                <div class="events-info">
+
+                </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#events-carousel" data-bs-slide="prev">
                       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                       <span class="visually-hidden">Previous</span>
@@ -38,13 +42,16 @@
                       <span class="carousel-control-next-icon" aria-hidden="true"></span>
                       <span class="visually-hidden">Next</span>
                     </button>
-                  
+                  </div>
             </div>
             <div class="sub-container">
+                <h1>Event Locator</h1>
+    <div id="map"></div>
             </div>
         </div>
     </div>
     
 </body>
 <script src="./assets/js/script.js"></script>
+
 </html>
