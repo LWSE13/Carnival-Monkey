@@ -125,4 +125,60 @@ cursor: pointer;
 
 .button-styling:hover {
     background-color: var(--pink);
+.carousel {
+    position: relative;
+    height: 100%;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    position: absolute;
+    bottom: 0;
+    width: 10%; /* Adjust the width as needed */
+    height: 50px; /* Adjust the height as needed */
+    background-color: grey;
+    /* Add any other necessary styles for the buttons */
+}
+
+.carousel-control-next{
+    right: 0;
+}
+
+.event-info{
+    z-index: 2;
+    background-color: #33333378;
+    display: none;
+    color: white;
+    font-family: "Nunito Sans", sans-serif;}
+h3{
+    margin-top: 0;
+    font-size: large;
+}
+.carousel {
+    background-size: cover; /* Cover the entire background */
+    background-position: right; /* Center the background image */
+    
+
+}
+#events-container:hover .event-info{
+    display: block;
+}
+img{
+    height: 1365px;
+    width:2426px
+}
+#logo{
+    display: flex; /* Make the container inline-block */
+    padding: 5px 0;
+    width: 25%;;
+    justify-content: center;
+    border: 5px solid black;
+}
+#logo-img{
+    height: 70px;
+    width: 70px;
+}
+#map {
+            height: 400px;
+            width: 100%;
 }
