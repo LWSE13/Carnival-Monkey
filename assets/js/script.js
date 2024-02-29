@@ -99,12 +99,22 @@ function clearEventInfo() {
     $('.events-info').empty(); // Empty the carousel div
 }
 
+
+
+
+//google maps api
+let map;
+let geocoder;
+let infowindow;
+
 initMap();
 function initMap() {
-    // Your map initialization code here
+    
     var map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: -34.397, lng: 150.644},
         zoom: 8
     });
 }
+
+
 
