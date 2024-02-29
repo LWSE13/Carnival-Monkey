@@ -1,5 +1,5 @@
 :root {
-    --acc-colour: #2e3135;
+    --acc-colour: #ffffff;
     --blue: #9FEDE2;
     --pink: #F58EA4;
 }
@@ -24,39 +24,37 @@
 header {
 background-color: var(--acc-colour);
 padding: 1px;
+display: flex;
+align-items: center;
+justify-content: center;
 }
 
 #logo{
     margin-top: 5px;
-    display: flex; /* Make the container inline-block */
+    display: flex; 
     padding: 5px 0;
-    width: 25%;
+  
     
   
-}
-
-#logo-text h1 {
-    margin: -3px 0; /* Adjust this value to your liking */
 }
 
 #logo-text {
     display: flex;
     flex-direction: column;
-    margin-top: 10px;
     text-align: center;
-    margin-left: 10px;
+    
    
 }
 
-#logo-image {
-margin-top: 10px;
+.logo-image {
+margin-top: 100px;
 }
 
 .container {
     margin-top: 10px;
     display: flex;
     height: 85vh;
-    border: 5px solid black;
+    border: 5px solid rgb(0, 0, 0);
     padding: 10px;
 }
 
@@ -127,8 +125,4 @@ cursor: pointer;
 
 .button-styling:hover {
     background-color: var(--pink);
-}
-
-body {
-    background-color: black;
 }
