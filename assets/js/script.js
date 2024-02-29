@@ -1,5 +1,9 @@
 let currentIndex = 0;
 var apiKey = 'rI3KHyjz4y7GNb7pRt6687jSpKbj4MEC';
+// Event listener for DOMContentLoaded event
+document.addEventListener('DOMContentLoaded', function() {
+    displaySearchHistory(); // Display search history when the page is loaded
+});
 // Function to fetch events based on city
 function fetchEvents(city) {
     currentIndex = 0
@@ -89,12 +93,62 @@ function shuffleArray(array) {
     }
 }
 
-// Event listener for search button
+// Retrieve existing search history from local storage
+let searchHistory = JSON.parse(localStorage.getItem('searchHistory')) || [];
+
 document.getElementById('searchBtn').addEventListener('click', function search() {
     var city = document.getElementById('city-input').value;
-    clearEventInfo();
     fetchEvents(city);
+    
+    if (!searchHistory.includes(city)) {
+        searchHistory.push(city); // Add the city to search history if it's not already there
+        displaySearchHistory(); // Update the display
+        saveSearchHistory(); // Save the updated search history to local storage
+    }
 });
+
+// Function to display search history
+function displaySearchHistory() {
+    var inputContainer = document.getElementsByClassName('input-container')[0]; // Get the first element
+    var searchHistoryElement = inputContainer.querySelector('.search-history'); // Find the search history element
+    
+    if (!searchHistoryElement) {
+        searchHistoryElement = document.createElement("div"); // Create a div element
+        searchHistoryElement.classList.add('search-history'); // Add a class for styling
+        inputContainer.appendChild(searchHistoryElement); // Append the div to inputContainer
+        searchHistoryElement.innerHTML = '<h3>Search History</h3>';
+    }
+    
+    // Clear existing search items
+    searchHistoryElement.innerHTML = '<h3>Search History</h3>';
+    
+    // Display unique search items with click event and class
+    var uniqueSearchHistory = Array.from(new Set(searchHistory)); // Remove duplicates
+    uniqueSearchHistory.forEach(function(city, index) {
+        var searchItem = document.createElement('p');
+        searchItem.textContent = `${city}`;
+        searchItem.classList.add('searchItem'); // Add class 'searchItem'
+        searchItem.addEventListener('click', function() {
+            fetchEvents(city); // Fetch events for the clicked city
+        });
+        searchHistoryElement.appendChild(searchItem);
+    });
+}
+
+// Function to save search history to local storage
+function saveSearchHistory() {
+    localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
+}
+
+// Function to clear search history
+function clearSearchHistory() {
+    var inputContainer = document.getElementsByClassName('input-container')[0]; // Get the first element
+    var searchHistoryElement = inputContainer.querySelector('.search-history'); // Find the search history element
+    
+    if (searchHistoryElement) {
+        inputContainer.removeChild(searchHistoryElement); // Remove the search history element
+    }
+}
 function clearEventInfo() {
     $('.events-info').empty(); // Empty the carousel div
 }
@@ -107,4 +161,5 @@ function initMap() {
         zoom: 8
     });
 }
+
 
