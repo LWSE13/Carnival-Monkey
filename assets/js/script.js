@@ -129,6 +129,11 @@ function checkImageDimensions(images, eventInfo) {
     //$('.carousel').css('background-image', `url(${events.images[0].url})`);
 
     $('.events-info').append(eventInfo);
+    var latitude = parseFloat(events._embedded.venues[0].location.latitude);
+    var longitude = parseFloat(events._embedded.venues[0].location.longitude);
+
+    // Update the map with the new location
+    updateMap(latitude, longitude);
 }
 // Shuffle array function
 function shuffleArray(array) {
@@ -224,11 +229,30 @@ function clearEventInfo() {
     $('.events-info').empty(); // Empty the carousel div
 }
 
-initMap();
-function initMap() {
-    // Your map initialization code here
-    var map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: -34.397, lng: 150.644},
-        zoom: 8
+function updateMap(lat, lng) {
+    var eventMapLocation = new google.maps.LatLng(lat, lng);
+    map.setCenter(eventMapLocation);
+    map.setZoom(15);
+
+    new google.maps.Marker({
+        position: eventMapLocation,
+        map: map
     });
 }
+
+//google maps api
+let map;
+let geocoder;
+let infowindow;
+
+initMap();
+function initMap() {
+    map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 8,
+        center: {
+            lat: 40.72,
+            lng: -73.96,
+        },
+    });
+}
+window.initMap = initMap;
