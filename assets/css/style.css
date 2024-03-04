@@ -75,7 +75,6 @@ input:focus{
     align-items: center; /* Center items horizontally */
     /* border: 3px solid black; */ /* Add a border */
     padding: 0 0 10px 0; /* Add padding */
-    height: px;
     border-radius: 20px;
     box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.6);
 }

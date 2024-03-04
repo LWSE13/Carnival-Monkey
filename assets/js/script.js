@@ -49,19 +49,8 @@ function fetchEvents(city) {
     fetch(url)
     .then(response => response.json())
     .then(data => {
-        console.log(data);
-        var events = data._embedded.events;
-        clearEventInfo();
-        console.log(events.length);
-        // Shuffle the events array
-        shuffleArray(events);
-        // Display the first event initially
-        displayEvent(events[currentIndex]);
-        // Show carousel controls
-        document.querySelector('.carousel-control-prev').style.display = 'block';
-        document.querySelector('.carousel-control-next').style.display = 'block';
-        // Event listener for next button
-        document.querySelector('.carousel-control-next').addEventListener('click', function() {
+       
+            var events = data._embedded.events;
             clearEventInfo();
             // Shuffle the events array
             shuffleArray(events);
@@ -89,7 +78,6 @@ function fetchEvents(city) {
         console.error('Error fetching events:', error);
     });
 }
-
 // Function to display a single event
 function displayEvent(events)
 {
@@ -131,18 +119,22 @@ function checkImageDimensions(images, eventInfo) {
             break;
         }
     }
+    
+    if (!foundCorrectSize) {
+        console.log('No image with dimensions 1024x683 found for this event.');
+        $('.carousel').css('background-color', `#333`);
+    }
+}
+
+    //$('.carousel').css('background-image', `url(${events.images[0].url})`);
 
     $('.events-info').append(eventInfo);
-    
-    //converts the lat and long strings to a float 
     var latitude = parseFloat(events._embedded.venues[0].location.latitude);
     var longitude = parseFloat(events._embedded.venues[0].location.longitude);
 
-    // Updates the map with the new location
+    // Update the map with the new location
     updateMap(latitude, longitude);
-
 }
-
 // Shuffle array function
 function shuffleArray(array) {
     for (var i = array.length - 1; i > 0; i--) {
