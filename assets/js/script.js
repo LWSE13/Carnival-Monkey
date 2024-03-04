@@ -15,11 +15,8 @@ var placeholder;
 document.addEventListener('DOMContentLoaded', function() {
     displaySearchHistory(); // Display search history when the page is loaded
     if (city === ""){
-        $('.carousel').css('background-color', `var(--blue)`);
-        placeholder= document.createElement('h1');
-        placeholder.classList.add('placeholder-carousel');
-        placeholder.innerHTML = "please enter a city";
-        $('.carousel').append(placeholder);
+        $('.carousel').css('background-image', 'url(./assets/images/cm-2.png)');
+       
     }
 });
 
@@ -49,7 +46,6 @@ function fetchEvents(city) {
     eventloaded = true
     currentIndex = 0
     var url = `https://app.ticketmaster.com/discovery/v2/events.json?apikey=${apiKey}&city=${city}`;
-    placeholder.innerHTML = ""
     fetch(url)
     .then(response => response.json())
     .then(data => {

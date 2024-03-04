@@ -58,7 +58,8 @@ margin-top: 100px;
 }
 
 input{
-    border: 1px solid var(--blue);
+    border: 1px solid white;
+    background: var(--blue);
 }
 input:focus{
     outline: none;
@@ -66,21 +67,21 @@ input:focus{
 
 }
 .input-container {
-    flex: 0 0 30%; /* Take up 30% of the width */
-    background-color: var(--acc-colour);
+    flex: 0 0 25%; /* Take up 30% of the width */
+    background-color: var(--blue);
     display: flex;
     flex-direction: column;
     justify-content: flex-start; /* Align items vertically to the top */
     align-items: center; /* Center items horizontally */
-    border: 3px solid black; /* Add a border */
-    padding: 0 0 10px 0 ; /* Add padding */
+    /* border: 3px solid black; */ /* Add a border */
+    padding: 0 0 10px 0; /* Add padding */
     height: px;
     border-radius: 20px;
-    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.6); 
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.6);
 }
 button{
-    background-color: white; 
-    border: 2px solid black;
+    background-color: white;
+    border: none;
     border-radius: 4px;
 }
 
@@ -92,7 +93,7 @@ button{
     margin: 10px;
 }
 h2{
-    color: var(--blue);
+    color: white;
 }
 
 
@@ -101,7 +102,7 @@ h2{
     display: flex;
     flex-direction: column;
     flex: 0 0 70%; /* Take up 50% of the width */
-    
+    margin-left: 40px;
 }
 
 .sub-container {
@@ -109,8 +110,7 @@ h2{
     border-radius: 15px;
     margin: 0 5px 5px;
     height: 50%;
-    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.6); 
-    
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.6);
 }
 
 .line1 {
@@ -122,14 +122,14 @@ h2{
 }
 .button-styling {
     background-color: var(--blue);
-border: none;
-color: white;
-padding: 15px 33px;
-text-align: center;
-font-size: 20px;
-border-radius: 4px;
-transition-duration: 0.5s;
-cursor: pointer;
+    border: 1px solid white;
+    color: white;
+    padding: 15px 33px;
+    text-align: center;
+    font-size: 20px;
+    border-radius: 4px;
+    transition-duration: 0.5s;
+    cursor: pointer;
 }
 
 .button-styling:hover {
@@ -138,15 +138,15 @@ cursor: pointer;
 .carousel {
     position: relative;
     height: 100%;
-    border: 2px solid black;
-    border-radius: 4px; 
+    /* border: 2px solid black; */
+    border-radius: 15px;
 }
 
 .carousel-control-prev,
 .carousel-control-next,
 .moreInfo {
     position: absolute;
-    bottom: 0;
+    bottom: 10px;
     width: 10%; /* Adjust the width as needed */
     height: 50px; /* Adjust the height as needed */
     background-color: var(--blue);
@@ -161,11 +161,14 @@ cursor: pointer;
     background-color: var(--pink);
     cursor: pointer;
    }
+   .carousel-control-prev{
+    left: 10px;
+   }
 .moreInfo{
     right: 45%;
 }
 .carousel-control-next{
-    right: 0;
+    right: 10px;
 }
 
 .event-info{
@@ -195,11 +198,13 @@ h3{
 .search-history{
     font-family: "Nunito Sans", sans-serif;
     text-align: center;
+    color: white;
+    margin-top: 20px;
 }
 .searchItem{
     padding: 8px;
-    border: 1px solid var(--blue);
-    margin-top: 10px;
+    border: 1px solid white;
+    margin-top: 25px;
     text-align: center;
     font-size: 20px;
     border-radius: 5px;
@@ -287,4 +292,14 @@ p{
     font-size: 40px;
     align-items: center;
     justify-content: center;
+}
+#events-container{
+    margin-bottom: 25px;
+}
+#event-locator{
+    text-align: center;
+    color: white;
+}
+#maps-container{
+    background-color: var(--blue);
 }
