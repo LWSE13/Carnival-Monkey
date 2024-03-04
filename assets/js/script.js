@@ -1,5 +1,6 @@
 let currentIndex = 0;
 var apiKey = 'rI3KHyjz4y7GNb7pRt6687jSpKbj4MEC';
+
 // Function to fetch events based on city
 function fetchEvents(city) {
     currentIndex = 0
@@ -8,39 +9,38 @@ function fetchEvents(city) {
     fetch(url)
     .then(response => response.json())
     .then(data => {
-       
-            var events = data._embedded.events;
+        console.log(data);
+        var events = data._embedded.events;
+        clearEventInfo();
+        console.log(events.length);
+        // Shuffle the events array
+        shuffleArray(events);
+        // Display the first event initially
+        displayEvent(events[currentIndex]);
+        // Show carousel controls
+        document.querySelector('.carousel-control-prev').style.display = 'block';
+        document.querySelector('.carousel-control-next').style.display = 'block';
+        // Event listener for next button
+        document.querySelector('.carousel-control-next').addEventListener('click', function() {
             clearEventInfo();
-            console.log(events.length);
-            // Shuffle the events array
-            shuffleArray(events);
-            // Display the first event initially
+            currentIndex = (currentIndex + 1) % events.length;
             displayEvent(events[currentIndex]);
-            // Show carousel controls
-            document.querySelector('.carousel-control-prev').style.display = 'block';
-            document.querySelector('.carousel-control-next').style.display = 'block';
-            // Event listener for next button
-            document.querySelector('.carousel-control-next').addEventListener('click', function() {
-                clearEventInfo();
-                currentIndex = (currentIndex + 1) % events.length;
-                displayEvent(events[currentIndex]);
-            });
-            console.log(events);
-            // Event listener for previous button
-            document.querySelector('.carousel-control-prev').addEventListener('click', function() {
-                clearEventInfo();
-                currentIndex = (currentIndex - 1 + events.length) % events.length;
-                displayEvent(events[currentIndex]);
-            });
-       
+        });
+        console.log(events);
+        // Event listener for previous button
+        document.querySelector('.carousel-control-prev').addEventListener('click', function() {
+            clearEventInfo();
+            currentIndex = (currentIndex - 1 + events.length) % events.length;
+            displayEvent(events[currentIndex]);
+        });
     })
     .catch(error => {
         console.error('Error fetching events:', error);
     });
 }
+
 // Function to display a single event
-function displayEvent(events)
-{
+function displayEvent(events) {
     var eventName = events.name;
     var eventLocation = events._embedded.venues[0].name;
     var eventDate = events.dates.start.localDate;
@@ -57,30 +57,35 @@ function displayEvent(events)
     `;
     checkImageDimensions(events.images, eventInfo);
 
-
-// Function to check image dimensions
-function checkImageDimensions(images, eventInfo) {
-    var foundCorrectSize = false;
-    
-    for (var i = 0; foundCorrectSize = true; i++) {
-        if (images[i].width === 1024 && images[i].height === 683) {
-            console.log(`Found image with correct dimensions (1024x683): ${images[i].url}`);
-            $('.carousel').css('background-image', `url(${images[i].url})`);
-            foundCorrectSize = true;
-            break;
+    // Function to check image dimensions
+    function checkImageDimensions(images, eventInfo) {
+        var foundCorrectSize = false;
+        
+        for (var i = 0; foundCorrectSize = true; i++) {
+            if (images[i].width === 1024 && images[i].height === 683) {
+                console.log(`Found image with correct dimensions (1024x683): ${images[i].url}`);
+                $('.carousel').css('background-image', `url(${images[i].url})`);
+                foundCorrectSize = true;
+                break;
+            }
+        }
+        
+        if (!foundCorrectSize) {
+            console.log('No image with dimensions 1024x683 found for this event.');
+            $('.carousel').css('background-color', `#333`);
         }
     }
-    
-    if (!foundCorrectSize) {
-        console.log('No image with dimensions 1024x683 found for this event.');
-        $('.carousel').css('background-color', `#333`);
-    }
-}
-
-    //$('.carousel').css('background-image', `url(${events.images[0].url})`);
 
     $('.events-info').append(eventInfo);
+
+    var latitude = parseFloat(events._embedded.venues[0].location.latitude);
+    var longitude = parseFloat(events._embedded.venues[0].location.longitude);
+
+    // Update the map with the new location
+    updateMap(latitude, longitude);
+
 }
+
 // Shuffle array function
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -95,12 +100,21 @@ document.getElementById('searchBtn').addEventListener('click', function search()
     clearEventInfo();
     fetchEvents(city);
 });
+
 function clearEventInfo() {
     $('.events-info').empty(); // Empty the carousel div
 }
 
+function updateMap(lat, lng) {
+    var eventMapLocation = new google.maps.LatLng(lat, lng);
+    map.setCenter(eventMapLocation);
+    map.setZoom(15);
 
-
+    new google.maps.Marker({
+        position: eventMapLocation,
+        map: map
+    });
+}
 
 //google maps api
 let map;
@@ -109,12 +123,12 @@ let infowindow;
 
 initMap();
 function initMap() {
-    
-    var map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: -34.397, lng: 150.644},
-        zoom: 8
+    map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 8,
+        center: {
+            lat: 40.72,
+            lng: -73.96,
+        },
     });
 }
-
-
-
+window.initMap = initMap;
