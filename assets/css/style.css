@@ -1,0 +1,170 @@
+:root {
+    --acc-colour: #ffffff;
+    --blue: #9FEDE2;
+    --pink: #F58EA4;
+}
+.blue {
+    color: var(--blue);
+    font-size: 40px;
+}
+.pink {
+    color: var(--pink);
+    font-size: 35px;
+    
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Helvetica, Arial, sans-serif;
+    
+}
+
+
+header {
+background-color: var(--acc-colour);
+padding: 1px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+#logo{
+    margin-top: 5px;
+    display: flex; 
+    padding: 5px 0;
+  
+    
+  
+}
+
+#logo-text {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    
+   
+}
+
+.logo-image {
+margin-top: 100px;
+}
+
+.container {
+    margin-top: 10px;
+    display: flex;
+    height: 130vh;
+    border: 5px solid rgb(0, 0, 0);
+    padding: 10px;
+}
+
+
+.input-container {
+    flex: 0 0 30%; /* Take up 30% of the width */
+    background-color: var(--acc-colour);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Align items vertically to the top */
+    align-items: center; /* Center items horizontally */
+    border: 3px solid black; /* Add a border */
+    padding: 0 0 10px 0 ; /* Add padding */
+    border-radius: 20px;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.6); 
+}
+button{
+    background-color: white; 
+    border: 2px solid black;
+    border-radius: 4px;
+}
+
+.input-container input,
+.input-container h2,
+.input-container button {
+    display: block;
+    padding: 10px;
+    margin: 10px;
+}
+
+
+
+.stacked-containers {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 70%; /* Take up 50% of the width */
+    
+}
+
+.sub-container {
+    background-color: var(--acc-colour);
+    border-radius: 15px;
+    margin: 0 5px 5px;
+    height: 50%;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.6); 
+    
+}
+
+.line1 {
+    width: 100%;
+    padding-bottom: 3px;
+    background-color: #000000;
+    margin: 0 auto;
+    border-radius: 2px;
+}
+.button-styling {
+    background-color: var(--blue);
+border: none;
+color: white;
+padding: 15px 33px;
+text-align: center;
+font-size: 20px;
+border-radius: 4px;
+transition-duration: 0.5s;
+cursor: pointer;
+}
+
+.button-styling:hover {
+    background-color: var(--pink);
+}
+.carousel {
+    position: relative;
+    height: 100%;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    position: absolute;
+    bottom: 0;
+    width: 10%; /* Adjust the width as needed */
+    height: 50px; /* Adjust the height as needed */
+    background-color: grey;
+    /* Add any other necessary styles for the buttons */
+}
+
+.carousel-control-next{
+    right: 0;
+}
+
+.event-info{
+    z-index: 2;
+    background-color: #33333378;
+    display: none;
+    color: white;
+    font-family: "Nunito Sans", sans-serif;}
+h3{
+    margin-top: 0;
+    font-size: large;
+}
+.carousel {
+    background-size: cover; /* Cover the entire background */
+    background-position: right; /* Center the background image */
+    
+
+}
+#events-container:hover .event-info{
+    display: block;
+}
+
+#map {
+            height: 400px;
+            width: 100%;
+}
