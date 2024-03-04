@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+    <a href="./index.html" >
+    <header>
+        <div id="logo">
+            <div class="logo-image">
+                <img src="./assets/images/carnival-monkey-inv.png" alt="picture of monkey with party hat on" width="100px" height="100px"/>
+            </div>
+            <div id="logo-text">
+                
+                <img src="assets/images/cm_logo.png" alt="carnival monkey logo with balloons and fair attractions" width="200px" >
+            </div>
+            <div class="logo-image">
+                <img src="./assets/images/carnival-monkey.png" alt="picture of monkey with party hat on" width="100px" height="100px"/>
+            </div>
+        </div>
+    </header>
+</a>
+    <div class="line1"></div>
+    <section id="eventinfo-p2">
+
+    </section>
+</body>
+<script>
+// Get the URL search parameters
+var urlParams = new URLSearchParams(window.location.search);
+
+// Get the value of the 'eventName' parameter
+var eventName = urlParams.get('eventName');
+var eventLocation = urlParams.get('eventLocation');
+var eventTime = urlParams.get('eventTime');
+var eventDate = urlParams.get('eventDate');
+var eventSeatMap = urlParams.get('eventSeatMap');
+var eventLink = urlParams.get('eventLink');
+var seatmap = urlParams.get('seatmap');
+// Get the value of the 'eventImg' parameter
+console.log(seatmap);
+var eventImg = urlParams.get('eventImg');
+console.log(eventName)
+console.log(eventLink)
+var eventdetails = document.getElementById("eventinfo-p2");
+if (seatmap === "true"){
+    eventdetails.innerHTML = `
+        <h1>${eventName}</h1>
+        <div class="image-p2"> 
+        <img src="${eventImg}" alt="Event Image" id="img-p2">
+        </div>
+        <div id="eventdetails-p2">
+        <p> Date: ${eventDate}</p>
+        <p> Time: ${eventTime}</p>
+        <p> Locations: ${eventLocation}</p>
+        </div>
+        <h1 id="seatmap"> Seat Map </h1>
+        <div class="image-p2" id="img-seatmap"> 
+        <img src="${eventSeatMap}" alt="Event Seatmap" id="img-p2">
+        </div>
+        <a href="${eventLink}" id="link">Click here to buy</a>
+
+`;
+}
+else{
+    eventdetails.innerHTML = `
+        <h1>${eventName}</h1>
+        <div class="image-p2"> 
+        <img src="${eventImg}" alt="Event Image" id="img-p2">
+        </div>
+        <p> Date: ${eventDate}</p>
+        <p> Time: ${eventTime}</p>
+        <p> Locations: ${eventLocation}</p>
+        <a href="${eventLink}" id="link">Click here to buy</a>
+
+`;
+}
+
+
+</script>
+</html>

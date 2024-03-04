@@ -57,7 +57,14 @@ margin-top: 100px;
     padding: 10px;
 }
 
+input{
+    border: 1px solid var(--blue);
+}
+input:focus{
+    outline: none;
+    border: 1px solid var(--pink);
 
+}
 .input-container {
     flex: 0 0 30%; /* Take up 30% of the width */
     background-color: var(--acc-colour);
@@ -84,6 +91,9 @@ button{
     padding: 10px;
     margin: 10px;
 }
+h2{
+    color: var(--blue);
+}
 
 
 
@@ -106,7 +116,7 @@ button{
 .line1 {
     width: 100%;
     padding-bottom: 3px;
-    background-color: #000000;
+    background-color: var(--blue);
     margin: 0 auto;
     border-radius: 2px;
 }
@@ -133,21 +143,27 @@ cursor: pointer;
 }
 
 .carousel-control-prev,
-.carousel-control-next {
+.carousel-control-next,
+.moreInfo {
     position: absolute;
     bottom: 0;
     width: 10%; /* Adjust the width as needed */
     height: 50px; /* Adjust the height as needed */
     background-color: var(--blue);
     color: white;
+    display: none;
     /* Add any other necessary styles for the buttons */
 }
 .carousel-control-prev:hover,
-.carousel-control-next:hover {
+.carousel-control-next:hover,
+.moreInfo:hover {
     
     background-color: var(--pink);
     cursor: pointer;
    }
+.moreInfo{
+    right: 45%;
+}
 .carousel-control-next{
     right: 0;
 }
@@ -178,6 +194,7 @@ h3{
 }
 .search-history{
     font-family: "Nunito Sans", sans-serif;
+    text-align: center;
 }
 .searchItem{
     padding: 8px;
@@ -190,4 +207,84 @@ h3{
 .searchItem:hover{
     border: 2px solid var(--pink);
     cursor: pointer;
+}
+.image-p2{
+display: flex;
+justify-content: center;
+margin-top: 60px;
+}
+#img-p2{
+    border: 5px solid var(--blue);
+    margin-bottom: 30px;
+}
+#eventinfo-p2{
+    text-align: center;
+    padding-top: 60px;
+    font-size: 25px;
+    margin: 40px 0 ;
+}
+#link{
+    color: var(--blue);
+    text-decoration: none;
+    border: 2px solid var(--blue);
+    padding: 5px;
+    margin-top: 10px;
+}
+#link:hover{
+    color: var(--pink);
+    border: 2px solid var(--pink);
+}
+p{
+    margin: 20px;
+}
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  
+  .modal-content {
+    background-color: var(--blue);
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    border-radius: 5px;
+    color: white;
+    position: relative;
+  }
+  
+  .close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover {
+    cursor: pointer;
+  }
+  #eventdetails-p2{
+    background-color: var(--blue);
+    padding: 20px;
+    margin: 30px 0 70px;
+  }
+  #img-seatmap{
+    padding: 0;
+    margin: 0;
+  }
+.placeholder-carousel{
+    display: flex;
+    color: white;
+    font-size: 40px;
+    align-items: center;
+    justify-content: center;
 }

@@ -1,21 +1,61 @@
-let currentIndex = 0;
+var currentIndex = 0;
 var apiKey = 'rI3KHyjz4y7GNb7pRt6687jSpKbj4MEC';
+var eventloaded = false;
+var eventName 
+var eventLocation 
+var eventDate 
+var eventTime 
+var eventImg
+var eventSeatMap
+var eventLink
+var seatmap = false
+var city = document.getElementById('city-input').value;
+var placeholder;
 // Event listener for DOMContentLoaded event
 document.addEventListener('DOMContentLoaded', function() {
     displaySearchHistory(); // Display search history when the page is loaded
+    if (city === ""){
+        $('.carousel').css('background-color', `var(--blue)`);
+        placeholder= document.createElement('h1');
+        placeholder.classList.add('placeholder-carousel');
+        placeholder.innerHTML = "please enter a city";
+        $('.carousel').append(placeholder);
+    }
 });
+
+
+
+
+
+document.getElementById('eventdetails').addEventListener('click', function() {
+    // Change the URL to the eventDetails.html page
+   
+   
+    if (eventSeatMap === "Seatmap not available"){
+        var url = `eventDetails.html?eventName=${eventName}&eventImg=${eventImg}&eventLocation=${eventLocation}&eventDate=${eventDate}&eventTime=${eventTime}&eventLink=${eventLink}`;
+
+    }
+    else{
+        var url = `eventDetails.html?eventName=${eventName}&eventImg=${eventImg}&eventLocation=${eventLocation}&eventDate=${eventDate}&eventTime=${eventTime}&eventSeatMap=${eventSeatMap}&eventLink=${eventLink}&seatmap=true`;
+
+    }
+    
+     // Redirect to eventDetails.html
+     window.location.href = url;
+});
+
 // Function to fetch events based on city
 function fetchEvents(city) {
+    eventloaded = true
     currentIndex = 0
     var url = `https://app.ticketmaster.com/discovery/v2/events.json?apikey=${apiKey}&city=${city}`;
-    
+    placeholder.innerHTML = ""
     fetch(url)
     .then(response => response.json())
     .then(data => {
        
             var events = data._embedded.events;
             clearEventInfo();
-            console.log(events.length);
             // Shuffle the events array
             shuffleArray(events);
             // Display the first event initially
@@ -23,13 +63,13 @@ function fetchEvents(city) {
             // Show carousel controls
             document.querySelector('.carousel-control-prev').style.display = 'block';
             document.querySelector('.carousel-control-next').style.display = 'block';
+            document.querySelector('.moreInfo').style.display = 'block';
             // Event listener for next button
             document.querySelector('.carousel-control-next').addEventListener('click', function() {
                 clearEventInfo();
                 currentIndex = (currentIndex + 1) % events.length;
                 displayEvent(events[currentIndex]);
             });
-            console.log(events);
             // Event listener for previous button
             document.querySelector('.carousel-control-prev').addEventListener('click', function() {
                 clearEventInfo();
@@ -45,12 +85,20 @@ function fetchEvents(city) {
 // Function to display a single event
 function displayEvent(events)
 {
-    var eventName = events.name;
-    var eventLocation = events._embedded.venues[0].name;
-    var eventDate = events.dates.start.localDate;
-    var eventTime = events.dates.start.localTime;
+     eventName = events.name;
+     eventLocation = events._embedded.venues[0].name;
+     eventDate = events.dates.start.localDate;
+     eventTime = events.dates.start.localTime;
     clearEventInfo();
     var eventInfo = document.createElement('div');
+    eventLink = events.url;
+    if (events.seatmap && events.seatmap.staticUrl) {
+        eventSeatMap = events.seatmap.staticUrl;
+        seatmap = true
+    } else {
+        // Handle the case where seatmap data is not available
+        eventSeatMap = "Seatmap not available";
+    }
     eventInfo.classList.add('event-info');
 
     eventInfo.innerHTML = `
@@ -70,6 +118,7 @@ function checkImageDimensions(images, eventInfo) {
         if (images[i].width === 1024 && images[i].height === 683) {
             console.log(`Found image with correct dimensions (1024x683): ${images[i].url}`);
             $('.carousel').css('background-image', `url(${images[i].url})`);
+            eventImg = images[i].url;
             foundCorrectSize = true;
             break;
         }
@@ -87,17 +136,43 @@ function checkImageDimensions(images, eventInfo) {
 }
 // Shuffle array function
 function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
+    for (var i = array.length - 1; i > 0; i--) {
         var j = Math.floor(Math.random() * (i + 1));
         [array[i], array[j]] = [array[j], array[i]];
     }
 }
 
 // Retrieve existing search history from local storage
-let searchHistory = JSON.parse(localStorage.getItem('searchHistory')) || [];
+var searchHistory = JSON.parse(localStorage.getItem('searchHistory')) || [];
 
 document.getElementById('searchBtn').addEventListener('click', function search() {
-    var city = document.getElementById('city-input').value;
+    city = document.getElementById('city-input').value;
+
+    if (city === '') {
+        document.getElementById('modal-alert').style.display = 'block';
+        // Close the modal when the 'x' is clicked
+        document.getElementsByClassName('close')[0].onclick = function() {
+            document.getElementById('modal-alert').style.display = 'none';
+        };
+        // Close the modal when clicking outside the modal
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('modal-alert')) {
+                document.getElementById('modal-alert').style.display = 'none';
+            }
+    
+        };
+    return;
+    }
+    
+    else{
+    if (city === '') {
+        // Show the modal if the city input is empty
+        $('#modal-alert').modal('show');
+        return; // Prevent further execution
+
+    }
+    }
+
     fetchEvents(city);
     
     if (!searchHistory.includes(city)) {
@@ -161,5 +236,3 @@ function initMap() {
         zoom: 8
     });
 }
-
-
