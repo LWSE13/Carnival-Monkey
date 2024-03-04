@@ -77,11 +77,12 @@ function displayEvent(events) {
     }
 
     $('.events-info').append(eventInfo);
-
+    
+    //converts the lat and long strings to a float 
     var latitude = parseFloat(events._embedded.venues[0].location.latitude);
     var longitude = parseFloat(events._embedded.venues[0].location.longitude);
 
-    // Update the map with the new location
+    // Updates the map with the new location
     updateMap(latitude, longitude);
 
 }
