@@ -203,7 +203,7 @@ function displaySearchHistory() {
     uniqueSearchHistory.forEach(function(city, index) {
         var searchItem = document.createElement('p');
         searchItem.textContent = `${city}`;
-        searchItem.classList.add('searchItem'); // Add class 'searchItem'
+        searchItem.classList.add('button-styling'); // Add class 'searchItem'
         searchItem.addEventListener('click', function() {
             fetchEvents(city); // Fetch events for the clicked city
         });

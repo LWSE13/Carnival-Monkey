@@ -3,15 +3,7 @@
     --blue: #9FEDE2;
     --pink: #F58EA4;
 }
-.blue {
-    color: var(--blue);
-    font-size: 40px;
-}
-.pink {
-    color: var(--pink);
-    font-size: 35px;
-    
-}
+
 * {
     margin: 0;
     padding: 0;
@@ -33,7 +25,6 @@ justify-content: center;
     margin-top: 5px;
     display: flex; 
     padding: 5px 0;
-  
     
   
 }
@@ -67,14 +58,14 @@ input:focus{
 
 }
 .input-container {
-    flex: 0 0 25%; /* Take up 30% of the width */
+    flex: 0 0 25%; /* Take up 25% of the width */
     background-color: var(--blue);
     display: flex;
     flex-direction: column;
     justify-content: flex-start; /* Align items vertically to the top */
     align-items: center; /* Center items horizontally */
-    /* border: 3px solid black; */ /* Add a border */
-    padding: 0 0 10px 0; /* Add padding */
+    border: 5px solid black; 
+    padding: 0 0 10px 0; 
     border-radius: 20px;
     box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.6);
 }
@@ -92,7 +83,7 @@ button{
     margin: 10px;
 }
 h2{
-    color: white;
+    color: rgb(0, 0, 0);
 }
 
 
@@ -102,6 +93,7 @@ h2{
     flex-direction: column;
     flex: 0 0 70%; /* Take up 50% of the width */
     margin-left: 40px;
+    height: auto;
 }
 
 .sub-container {
@@ -110,6 +102,7 @@ h2{
     margin: 0 5px 5px;
     height: 50%;
     box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.6);
+    overflow: hidden;
 }
 
 .line1 {
@@ -120,7 +113,7 @@ h2{
     border-radius: 2px;
 }
 .button-styling {
-    background-color: var(--blue);
+    background-color: #0e3b35;
     border: 1px solid white;
     color: white;
     padding: 15px 33px;
@@ -137,8 +130,9 @@ h2{
 .carousel {
     position: relative;
     height: 100%;
-    /* border: 2px solid black; */
+     border: 5px solid black; 
     border-radius: 15px;
+
 }
 
 .carousel-control-prev,
@@ -146,12 +140,12 @@ h2{
 .moreInfo {
     position: absolute;
     bottom: 10px;
-    width: 10%; /* Adjust the width as needed */
-    height: 50px; /* Adjust the height as needed */
+    width: 10%; 
+    height: 50px; 
     background-color: var(--blue);
     color: white;
     display: none;
-    /* Add any other necessary styles for the buttons */
+  
 }
 .carousel-control-prev:hover,
 .carousel-control-next:hover,
@@ -191,18 +185,18 @@ h3{
 }
 
 #map {
-            height: 400px;
+            height: 100%;
             width: 100%;
 }
 .search-history{
     font-family: "Nunito Sans", sans-serif;
     text-align: center;
-    color: white;
+    color: rgb(0, 0, 0);
     margin-top: 20px;
 }
 .searchItem{
     padding: 8px;
-    border: 1px solid white;
+    border: 1px solid rgb(0, 0, 0);
     margin-top: 25px;
     text-align: center;
     font-size: 20px;
@@ -241,7 +235,7 @@ margin-top: 60px;
 p{
     margin: 20px;
 }
-/* Modal styles */
+
 .modal {
     display: none;
     position: fixed;
@@ -297,8 +291,24 @@ p{
 }
 #event-locator{
     text-align: center;
-    color: white;
+    color: rgb(0, 0, 0);
+    border-bottom: 5px solid black;
+    border-radius: 1px;
 }
 #maps-container{
     background-color: var(--blue);
+    border: 5px solid black; 
+    
+}
+
+.heading-styles {
+    background-color: var(--pink);
+    padding-left: 40px;
+    border-bottom: 5px solid black;
+    width: 100%;
+}
+
+#carousel-controls {
+    display: flex;
+    justify-content: space-between;
 }
