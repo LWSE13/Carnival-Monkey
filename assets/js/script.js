@@ -76,6 +76,18 @@ function fetchEvents(city) {
     })
     .catch(error => {
         console.error('Error fetching events:', error);
+        document.getElementById('modal-alert-city').style.display = 'block';
+        document.getElementsByClassName('close')[1].onclick = function() {
+            document.getElementById('modal-alert-city').style.display = 'none';
+        };
+        // Close the modal when clicking outside the modal
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('modal-alert-city')) {
+                document.getElementById('modal-alert-city').style.display = 'none';
+            }
+    
+        };
+    return;
     });
 }
 // Function to display a single event
@@ -197,7 +209,6 @@ function displaySearchHistory() {
     
     // Clear existing search items
     searchHistoryElement.innerHTML = '<h3>Search History</h3>';
-    
     // Display unique search items with click event and class
     var uniqueSearchHistory = Array.from(new Set(searchHistory)); // Remove duplicates
     uniqueSearchHistory.forEach(function(city, index) {
