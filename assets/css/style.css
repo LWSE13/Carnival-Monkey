@@ -1,7 +1,7 @@
 :root {
-    --acc-colour: #ffffff;
-    --blue: #9FEDE2;
-    --pink: #F58EA4;
+    --acc-colour: #021422;
+    --blue: #d9011e;
+    --Text: #fcfce3;
 }
 
 * {
@@ -12,7 +12,9 @@
     
 }
 
-
+body {
+    background-color: var(--acc-colour);
+}
 header {
 background-color: var(--acc-colour);
 padding: 1px;
@@ -49,8 +51,9 @@ margin-top: 100px;
 }
 
 input{
-    border: 1px solid white;
-    background: var(--blue);
+    border: 2px solid rgb(0, 0, 0);
+    background: var(--Text);
+    border-radius: 5px;
 }
 input:focus{
     outline: none;
@@ -113,9 +116,9 @@ h2{
     border-radius: 2px;
 }
 .button-styling {
-    background-color: #0e3b35;
+    background-color: var(--acc-colour);
     border: 1px solid white;
-    color: white;
+    color: var(--Text);
     padding: 15px 33px;
     text-align: center;
     font-size: 20px;
@@ -125,8 +128,9 @@ h2{
 }
 
 .button-styling:hover {
-    background-color: var(--pink);
+    background-color: #6c0a17;
 }
+
 .carousel {
     position: relative;
     height: 100%;
@@ -143,7 +147,7 @@ h2{
     width: 10%; 
     height: 50px; 
     background-color: var(--blue);
-    color: white;
+    color: var(--Text);
     display: none;
   
 }
@@ -151,8 +155,9 @@ h2{
 .carousel-control-next:hover,
 .moreInfo:hover {
     
-    background-color: var(--pink);
+    background-color: #6c0a17;
     cursor: pointer;
+    transition: 0.3s;
    }
    .carousel-control-prev{
     left: 10px;
@@ -168,7 +173,7 @@ h2{
     z-index: 2;
     background-color: #33333378;
     display: none;
-    color: white;
+    color: var(--Text);
     font-family: "Nunito Sans", sans-serif;}
 h3{
     margin-top: 0;
@@ -191,7 +196,7 @@ h3{
 .search-history{
     font-family: "Nunito Sans", sans-serif;
     text-align: center;
-    color: rgb(0, 0, 0);
+    color: var(--Text);
     margin-top: 20px;
 }
 .searchItem{
@@ -256,12 +261,12 @@ p{
     width: 80%;
     max-width: 400px;
     border-radius: 5px;
-    color: white;
+    color: var(--Text);
     position: relative;
   }
   
   .close {
-    color: white;
+    color: var(--Text);
     float: right;
     font-size: 28px;
     font-weight: bold;
@@ -281,7 +286,7 @@ p{
   }
 .placeholder-carousel{
     display: flex;
-    color: white;
+    color: var(--Text);
     font-size: 40px;
     align-items: center;
     justify-content: center;
@@ -291,7 +296,7 @@ p{
 }
 #event-locator{
     text-align: center;
-    color: rgb(0, 0, 0);
+    color: var(--Text);
     border-bottom: 5px solid black;
     border-radius: 1px;
 }
@@ -302,13 +307,18 @@ p{
 }
 
 .heading-styles {
-    background-color: var(--pink);
+    display: flex;
+    justify-content: center;
     padding-left: 40px;
     border-bottom: 5px solid black;
     width: 100%;
+    text-align: center;
+    font-size: 25px;
+    color: var(--Text);
 }
 
 #carousel-controls {
     display: flex;
     justify-content: space-between;
 }
+
