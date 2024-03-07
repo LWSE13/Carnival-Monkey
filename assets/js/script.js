@@ -8,6 +8,7 @@ var eventTime
 var eventImg
 var eventSeatMap
 var eventLink
+var collapseButtonEl = document.getElementById("collapse-Btn");
 var seatmap = false
 var city = document.getElementById('city-input').value;
 var placeholder;
@@ -124,7 +125,6 @@ function checkImageDimensions(images, eventInfo) {
     
     for (var i = 0; foundCorrectSize = true; i++) {
         if (images[i].width === 1024 && images[i].height === 683) {
-            console.log(`Found image with correct dimensions (1024x683): ${images[i].url}`);
             $('.carousel').css('background-image', `url(${images[i].url})`);
             eventImg = images[i].url;
             foundCorrectSize = true;
@@ -133,7 +133,6 @@ function checkImageDimensions(images, eventInfo) {
     }
     
     if (!foundCorrectSize) {
-        console.log('No image with dimensions 1024x683 found for this event.');
         $('.carousel').css('background-color', `#333`);
     }
 }
@@ -251,6 +250,8 @@ function updateMap(lat, lng) {
     });
 }
 
+
+
 //google maps api
 let map;
 let geocoder;
@@ -267,3 +268,4 @@ function initMap() {
     });
 }
 window.initMap = initMap;
+

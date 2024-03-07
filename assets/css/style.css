@@ -216,6 +216,8 @@ display: flex;
 justify-content: center;
 margin-top: 60px;
 }
+
+
 #img-p2{
     border: 5px solid var(--blue);
     margin-bottom: 30px;
@@ -225,6 +227,7 @@ margin-top: 60px;
     padding-top: 60px;
     font-size: 25px;
     margin: 40px 0 ;
+    color: var(--Text);
 }
 #link{
     color: var(--blue);
@@ -322,3 +325,51 @@ p{
     justify-content: space-between;
 }
 
+#collapseBtn {
+    display: none;
+}
+
+.sh-hide {
+    display: none;
+
+}
+
+@media (max-width:450px) {
+    #img-p2 {
+        width: 100%;
+    }
+    .container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .stacked-containers {
+        margin-left: 0;
+    }
+    
+    .carousel {
+        background-position: center;
+    }
+
+    #collapseBtn {
+        display: block;
+        background-color: var(--blue);
+        margin-top: -50px;
+        border: none;
+    }
+
+    #collapse {
+        display: flex;
+        justify-content: center;
+        align-items: center 10%;
+        
+    }
+    body {
+        width: 100%;
+    }
+    
+    .search-history {
+        margin-bottom: 20px;
+    }
+  
+}
