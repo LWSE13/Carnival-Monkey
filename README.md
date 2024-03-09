@@ -8,7 +8,7 @@ Our team project, Carnival Monkey was designed to solve the problem of uncertain
 No installation needed. Simply visit our deployed application using this link! https://lwse13.github.io/Front-End-Inc-Project/
 ## Usage
 Upon visiting our site you will be greeted by our homepage. Simply enter your city and watch as a random event is displayed as well as surrounding attractions which are displayed on the live map underneath. Use the carousel to move through events if the one shown doesn't sound like your cup of tea. Click on the event details button to visit a page with further details of your chosen event which contains a link to the ticketmaster page where you can purchase tickets
-![welcome](assets/images/CM-welcome.png)
+![welcome](assets/images/CM-search.png)
 ## Credits
 @SiobahnWarrington: https://github.com/SiobahnWarrington
 
