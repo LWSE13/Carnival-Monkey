@@ -61,12 +61,12 @@ input:focus{
 
 }
 .input-container {
-    flex: 0 0 25%; /* Take up 25% of the width */
+    flex: 0 0 25%; 
     background-color: var(--blue);
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* Align items vertically to the top */
-    align-items: center; /* Center items horizontally */
+    justify-content: flex-start; 
+    align-items: center; 
     border: 5px solid black; 
     padding: 0 0 10px 0; 
     border-radius: 20px;
@@ -94,7 +94,7 @@ h2{
 .stacked-containers {
     display: flex;
     flex-direction: column;
-    flex: 0 0 70%; /* Take up 50% of the width */
+    flex: 0 0 70%; 
     margin-left: 40px;
     height: auto;
 }
@@ -180,8 +180,8 @@ h3{
     font-size: large;
 }
 .carousel {
-    background-size: cover; /* Cover the entire background */
-    background-position: right; /* Center the background image */
+    background-size: cover; 
+    background-position: right; 
     
 
 }

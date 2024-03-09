@@ -137,7 +137,7 @@ function checkImageDimensions(images, eventInfo) {
     }
 }
 
-    //$('.carousel').css('background-image', `url(${events.images[0].url})`);
+ 
 
     $('.events-info').append(eventInfo);
     var latitude = parseFloat(events._embedded.venues[0].location.latitude);
