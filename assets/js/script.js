@@ -257,8 +257,8 @@ let map;
 let geocoder;
 let infowindow;
 
-initMap();
-function initMap() {
+
+window.initMap = function() {
     map = new google.maps.Map(document.getElementById("map"), {
         zoom: 8,
         center: {
@@ -267,5 +267,9 @@ function initMap() {
         },
     });
 }
-window.initMap = initMap;
+
+
+window.onload = () => {
+    initMap();
+}
 
